@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="delete">हटवा</string>
+    <string name="add">जोडा</string>
+</resources>
