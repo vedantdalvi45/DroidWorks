@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -65,21 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         userRecyclerView = findViewById(R.id.user_recycler_view);
-        RecyclerUserAdapter recyclerUserAdapter = new RecyclerUserAdapter(userList,this);
-        recyclerUserAdapter.onRemoveButtonClicked((view,position)->{
-            Toast.makeText(this,"Removed " + userList.get(position).getName(),Toast.LENGTH_SHORT).show();
-            userList.remove(position);
-            recyclerUserAdapter.notifyItemRemoved(position);
-        });
-        recyclerUserAdapter.onCheckBoxChecked((view, isChecked, position) -> {
-            userList.get(position).setChecked(isChecked);
-            Log.d("Checked",isChecked+" "+userList.get(position).isChecked());
-            Toast.makeText(this,"Checked " + userList.get(position).getName()+" "+isChecked,Toast.LENGTH_SHORT).show();
-        });
+        RecyclerUserAdapter recyclerUserAdapter = getRecyclerUserAdapter();
         userRecyclerView.setAdapter(recyclerUserAdapter);
 
         userRecyclerView.setOnClickListener(v ->{
-            Toast.makeText(this,"Item Clicked",Toast.LENGTH_SHORT);
+            Toast.makeText(this,"Item Clicked",Toast.LENGTH_SHORT).show();
         });
 
         deteleButtonLayout = findViewById(R.id.detele_button_layout);
@@ -99,5 +90,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @NonNull
+    private RecyclerUserAdapter getRecyclerUserAdapter() {
+        RecyclerUserAdapter recyclerUserAdapter = new RecyclerUserAdapter(userList,this);
+
+        recyclerUserAdapter.onRemoveButtonClicked((view,position)->{
+            Toast.makeText(this,"Removed " + userList.get(position).getName(),Toast.LENGTH_SHORT).show();
+            userList.remove(position);
+            recyclerUserAdapter.notifyItemRemoved(position);
+        });
+        recyclerUserAdapter.onCheckBoxChecked((view, isChecked, position) -> {
+            userList.get(position).setChecked(isChecked);
+            Log.d("Checked",isChecked+" "+userList.get(position).isChecked());
+            Toast.makeText(this,"Checked " + userList.get(position).getName()+" "+isChecked,Toast.LENGTH_SHORT).show();
+        });
+        return recyclerUserAdapter;
     }
 }
