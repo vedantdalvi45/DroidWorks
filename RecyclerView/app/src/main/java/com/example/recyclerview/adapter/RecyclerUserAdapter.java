@@ -76,7 +76,6 @@ public class RecyclerUserAdapter extends RecyclerView.Adapter<RecyclerUserAdapte
         }
     }
 
-
     @NonNull
     @Override
     public UserVewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/restaurant"
+        android:title="Home"
+  />
+
+    <item
+        android:id="@+id/nav_list"
+        android:icon="@drawable/cuisine"
+        android:title="Cuisines"
+     />
+
+    <item
+        android:id="@+id/nav_menu"
+        android:icon="@drawable/bill"
+        android:title="Cart"
+        />
+
+    <item
+        android:id="@+id/nav_orders"
+        android:icon="@drawable/foodcart"
+        android:title="Orders"
+    />
+
+</menu>

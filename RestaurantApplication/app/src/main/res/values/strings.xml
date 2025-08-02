@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Dish Dash</string>
+    <string name="quote">Serving flavor with every click.</string>
+    <string name="rating">⭐ 4.5</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="place_to_order">Place To Order</string>
+    <string name="delete_item">Delete Item</string>
+
+
+</resources>

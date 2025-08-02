@@ -1,0 +1,17 @@
+<!-- res/drawable/searchview_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Changed color to white for a cleaner look -->
+    <solid android:color="#23FF5100" /> <!-- white background -->
+
+    <corners android:radius="12dp" /> <!-- rounded corners -->
+
+        <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp" />
+
+    <!-- Removed stroke and shadow for a flatter design, consistent with modern UI trends -->
+
+</shape>

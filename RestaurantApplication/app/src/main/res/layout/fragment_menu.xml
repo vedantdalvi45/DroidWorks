@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".MenuFragment">
+
+    <!-- CART Title -->
+    <TextView
+        android:id="@+id/cart_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CART"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <!-- RecyclerView for Selected Cuisines -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cart_text"
+        app:layout_constraintBottom_toTopOf="@id/totals_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- Totals Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/totals_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cart_recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/btn_place_order"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Net Total -->
+        <TextView
+            android:id="@+id/netTotalLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Net Total"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/netTotalAmount" />
+
+        <TextView
+            android:id="@+id/netTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹0.00"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/netTotalLabel" />
+
+        <!-- CGST -->
+        <TextView
+            android:id="@+id/cgstLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="CGST (2.5%)"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/netTotalLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cgstAmount"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/cgstAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹0.00"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toTopOf="@id/cgstLabel"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- SGST -->
+        <TextView
+            android:id="@+id/sgstLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="SGST (2.5%)"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/cgstLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sgstAmount"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/sgstAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹0.00"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toTopOf="@id/sgstLabel"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Grand Total -->
+        <TextView
+            android:id="@+id/grandTotalLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Grand Total"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/orange"
+            app:layout_constraintTop_toBottomOf="@id/sgstLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/grandTotalAmount"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/grandTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹0.00"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/orange"
+            app:layout_constraintTop_toTopOf="@id/grandTotalLabel"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Place Order Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_place_order"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Place Order"
+        android:textAllCaps="false"
+        android:layout_margin="16dp"
+        android:textColor="@android:color/black"
+        android:background="@drawable/place_order_button"
+        android:fontFamily="sans-serif-medium"
+        android:paddingVertical="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
