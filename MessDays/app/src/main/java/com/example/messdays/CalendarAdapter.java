@@ -3,6 +3,7 @@ package com.example.messdays;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.messdays.data.MessDayEvent;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +23,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
     private final ArrayList<String> daysOfMonth;
     private final OnItemListener onItemListener;
     private List<LocalDate> events;
+
+
 
     public CalendarAdapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener, List<LocalDate> events) {
         this.daysOfMonth = daysOfMonth;
@@ -40,12 +45,27 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
         holder.dayOfMonth.setText(daysOfMonth.get(position));
-        holder.localDate = events.get(position);
+        if (events != null && position < events.size()) {
+            holder.localDate = events.get(position);
 
-        LocalDate currentDate = LocalDate.now();
-        if (holder.localDate != null && holder.localDate.equals(currentDate)) {
-            holder.dayOfMonth.setTextSize(30);
-            holder.dayOfMonth.setTextColor(Color.BLUE);
+            LocalDate currentDate = LocalDate.now();
+            if (holder.localDate != null && holder.localDate.equals(currentDate)) {
+                holder.dayOfMonth.setTextSize(30);
+                holder.dayOfMonth.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.md_theme_dark_primaryContainer));
+            }
+        }
+//        Log.d("monthMap", MainActivity.monthMap.toString() + "=" + MainActivity.monthYearTextView.getText().toString());
+        if (MainActivity.monthMap.containsKey(MainActivity.monthYearTextView.getText().toString())) {
+//            Log.d("monthMap", "Key :"+ MainActivity.monthMap.containsKey(MainActivity.monthYearTextView.getText().toString()));
+
+            if (MainActivity.monthMap.get(MainActivity.monthYearTextView.getText().toString()).containsKey(holder.localDate)) {
+                MessDayEvent messDayEvent = MainActivity.monthMap.get(MainActivity.monthYearTextView.getText().toString()).get(holder.localDate);
+                if (messDayEvent.getMealPrice() == 60) {
+                    holder.linearLayout.setBackgroundResource(R.drawable.circular_background);
+                } else if (messDayEvent.getMealPrice() == 120) {
+                    holder.linearLayout.setBackgroundResource(R.drawable.circular_background_2);
+                }
+            }
         }
     }
 
