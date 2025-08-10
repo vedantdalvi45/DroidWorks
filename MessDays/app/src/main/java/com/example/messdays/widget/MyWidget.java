@@ -34,7 +34,6 @@ public class MyWidget extends AppWidgetProvider {
 
     public static final String ACTION_LUNCH_CLICK = "com.example.messdays.ACTION_LUNCH_CLICK";
     public static final String ACTION_DINNER_CLICK = "com.example.messdays.ACTION_DINNER_CLICK";
-    public static final String ACTION_DATE_CHANGED = "android.intent.action.DATE_CHANGED";
 
     private static List<Integer> counts = new ArrayList<>();
     public static void updateWidget(Context context) {
@@ -113,11 +112,6 @@ public class MyWidget extends AppWidgetProvider {
             } else if (ACTION_DINNER_CLICK.equals(action)) {
                 Log.d("MyWidget", "Dinner checkbox clicked");
                 todayEvent.setHasDinner(!todayEvent.isHasDinner());
-                needsUpdate = true;
-            } else if (ACTION_DATE_CHANGED.equals(action) || Intent.ACTION_TIME_CHANGED.equals(action) || Intent.ACTION_TIMEZONE_CHANGED.equals(action)) {
-                Log.d("MyWidget", "Date or time changed, updating widget");
-                // When the date changes, we need to refresh the widget with the new day's data.
-                // updateWidget() will fetch the new day's event and counts.
                 needsUpdate = true;
             }
 
