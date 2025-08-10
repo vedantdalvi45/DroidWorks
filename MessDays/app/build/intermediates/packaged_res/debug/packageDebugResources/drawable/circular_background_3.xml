@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    A circular shape drawable.
+    This can be used as a background for a View to make it appear as a circle.
+    The color can be changed to suit your app's theme.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- The solid color of the circle -->
+    <solid android:color="#BBF1F2" /> <!-- A gold color for example -->
+
+    <!-- Optional: Define a specific size for the circle -->
+    <size
+        android:width="30dp"
+        android:height="30dp"/>
+
+</shape>
